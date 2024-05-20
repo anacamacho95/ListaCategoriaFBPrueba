@@ -25,7 +25,7 @@ class DaoTareasFB: InterfaceDaoTareas, InterfaceDaoConexion{
                     .update("idTarea", idDocumento)
                     .addOnSuccessListener {
                         ta.idTarea = documentReference.id
-                        Log.d("ConfirmeAdd", "Se ha creado la tarea correctamente")
+                        Log.d("firebase", "Se ha creado la tarea correctamente")
                     }
                     .addOnFailureListener { e ->
                         // Manejar el error de actualización
@@ -68,11 +68,11 @@ class DaoTareasFB: InterfaceDaoTareas, InterfaceDaoConexion{
                 if (task.isSuccessful) {
                     for (document in task.result) {
                         val tarea = document.toObject(Tarea::class.java)
-                        Log.d("pruebas", tareaEncontrada?.idTarea+"--"+tarea.nombre)
+                        Log.d("firebase", tareaEncontrada?.idTarea+"--"+tarea.nombre)
                     }
                 }
                 else {
-                    Log.d("pruebas", "Error al obtener documentos.", task.exception)
+                    Log.d("firebase", "Error al obtener documentos.", task.exception)
                 }
             }
         return tareaEncontrada ?: Tarea("","Pendiente")
@@ -94,11 +94,11 @@ class DaoTareasFB: InterfaceDaoTareas, InterfaceDaoConexion{
         conexion.collection("tareas").document(ta.idTarea)
             .delete()
             .addOnSuccessListener {
-                Log.d("Firebase", "Tarea eliminada correctamente.")
+                Log.d("firebase", "Tarea eliminada correctamente.")
                 // Aquí puedes realizar acciones adicionales luego de la eliminación, si es necesario
             }
             .addOnFailureListener { exception ->
-                Log.e("Firebase", "Error al eliminar tarea: $exception")
+                Log.e("firebase", "Error al eliminar tarea: $exception")
                 // Maneja el error de eliminación
             }
     }
@@ -112,7 +112,7 @@ class DaoTareasFB: InterfaceDaoTareas, InterfaceDaoConexion{
 //                    .update("idItem", idDocumento)
 //                    .addOnSuccessListener {
 //                        ite.idItem = documentReference.id
-//                        Log.d("ConfirmeAdd", "Se ha creado el cine correctamente")
+//                        Log.d("firebase", "Se ha creado el cine correctamente")
 //                    }
 //                    .addOnFailureListener { e ->
 //                        // Manejar el error de actualización
@@ -155,14 +155,14 @@ class DaoTareasFB: InterfaceDaoTareas, InterfaceDaoConexion{
 //                    val document = documents.documents[0]
 //                    itenEncontrado = document.toObject(Item::class.java)
 //                    itenEncontrado?.idItem = document.id
-//                    Log.d("Firebase", "Item encontrada: ${itenEncontrado?.accion}")
+//                    Log.d("firebase", "Item encontrada: ${itenEncontrado?.accion}")
 //                } else {
-//                    Log.d("Firebase", "Item no encontrada")
+//                    Log.d("firebase", "Item no encontrada")
 //                    itenEncontrado = Item("","No encontrada",false)
 //                }
 //            }
 //            .addOnFailureListener { exception ->
-//                Log.e("Firebase", "Error al obtener Tarea: $exception")
+//                Log.e("firebase", "Error al obtener Tarea: $exception")
 //                itenEncontrado = Item("","Error",false)
 //            }
 //        return itenEncontrado ?: Item("","Pendiente",false)
@@ -184,11 +184,11 @@ class DaoTareasFB: InterfaceDaoTareas, InterfaceDaoConexion{
 //        conexion.collection("items").document(ite.idItem)
 //            .delete()
 //            .addOnSuccessListener {
-//                Log.d("Firebase", "Tarea eliminada correctamente.")
+//                Log.d("firebase", "Tarea eliminada correctamente.")
 //                // Aquí puedes realizar acciones adicionales luego de la eliminación, si es necesario
 //            }
 //            .addOnFailureListener { exception ->
-//                Log.e("Firebase", "Error al eliminar tarea: $exception")
+//                Log.e("firebase", "Error al eliminar tarea: $exception")
 //                // Maneja el error de eliminación
 //            }
 //    }

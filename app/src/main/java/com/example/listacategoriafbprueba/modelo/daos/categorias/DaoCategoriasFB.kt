@@ -32,7 +32,7 @@ class DaoCategoriasFB: InterfaceDaoCategorias, InterfaceDaoConexion {
                     .update("idCategoria", idDocumento)
                     .addOnSuccessListener {
                         ca.idCategoria = documentReference.id
-                        Log.d("pruebas", "Se ha creado la categoria correctamente")
+                        Log.d("firebase", "Se ha creado la categoria correctamente")
                     }
                     .addOnFailureListener { e ->
                         // Manejar el error de actualización
@@ -57,11 +57,11 @@ class DaoCategoriasFB: InterfaceDaoCategorias, InterfaceDaoConexion {
                     }
                     //aqui es donde se muestran los resultados. Los del main no tienen datos aún. Esto es un metodo asincrono
                     categorias.forEach {
-                        Log.d("pruebas",it.idCategoria+"--"+it.nombre)
+                        Log.d("firebase",it.idCategoria+"--"+it.nombre)
                     }
                 }
                 else {
-                    Log.d("pruebas", "Error al obtener documentos.", task.exception)
+                    Log.d("firebase", "Error al obtener documentos.", task.exception)
                 }
             }
         return categorias
@@ -76,11 +76,11 @@ class DaoCategoriasFB: InterfaceDaoCategorias, InterfaceDaoConexion {
                 if (task.isSuccessful) {
                     for (document in task.result) {
                         val categoria = document.toObject(Categoria::class.java)
-                        Log.d("pruebas", categoriaEncontrada?.idCategoria+"--"+categoria.nombre)
+                        Log.d("firebase", categoriaEncontrada?.idCategoria+"--"+categoria.nombre)
                     }
                 }
                 else {
-                    Log.d("pruebas", "Error al obtener documentos.", task.exception)
+                    Log.d("firebase", "Error al obtener documentos.", task.exception)
                 }
             }
         return categoriaEncontrada ?: Categoria("Pendiente")
@@ -90,11 +90,11 @@ class DaoCategoriasFB: InterfaceDaoCategorias, InterfaceDaoConexion {
         conexion.collection("categorias").document(ca.idCategoria)
             .update("nombre", ca.nombre)
             .addOnSuccessListener {  documentReference ->
-                Log.d("pruebas","Documento actualizado")
+                Log.d("firebase","Documento actualizado")
 
             }
             .addOnFailureListener { e: Exception? ->
-                Log.d("pruebas","Error al actualizar documento",e)
+                Log.d("firebase","Error al actualizar documento",e)
             }
     }
 
@@ -102,11 +102,11 @@ class DaoCategoriasFB: InterfaceDaoCategorias, InterfaceDaoConexion {
         conexion.collection("categorias").document(ca.idCategoria)
             .delete()
             .addOnSuccessListener {
-                Log.d("pruebas", "Categoria eliminada correctamente.")
+                Log.d("firebase", "Categoria eliminada correctamente.")
                 // Aquí puedes realizar acciones adicionales luego de la eliminación, si es necesario
             }
             .addOnFailureListener { exception ->
-                Log.e("pruebas", "Error al eliminar categoria: $exception")
+                Log.e("firebase", "Error al eliminar categoria: $exception")
                 // Maneja el error de eliminación
             }
     }
