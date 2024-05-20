@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25389588457",
+    "project_id": "listacategoriaprueba",
+    "storage_bucket": "listacategoriaprueba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25389588457:android:5fee875cd7f8eb610c7578",
+        "android_client_info": {
+          "package_name": "com.example.listacategoriafbprueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUb6LjAMWch0dX7QlCMPGknIONgoH0TCM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
