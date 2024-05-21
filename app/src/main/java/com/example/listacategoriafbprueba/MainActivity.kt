@@ -24,15 +24,16 @@ class MainActivity : AppCompatActivity() {
         daoCategoria.createConexion(conexion)
         daoTarea.createConexion(conexion)
 
-        pruebas()
+        pruebas1()
+        //pruebas2()
     }
 
-    fun pruebas() {
+    fun pruebas1() {
 
         Log.d("pruebas", " *** Añado categorias: hogar y viajes ***")
-        var hogar = Categoria("Hogar")
+        var hogar = Categoria("estudiar2")
         daoCategoria.addCategoria(hogar)
-        var viajes = Categoria("Viajes")
+        var viajes = Categoria("Ir al Rocio2")
         daoCategoria.addCategoria(viajes)
 
         Log.d("pruebas", " *** Veo categorias añadidas ***")
@@ -42,9 +43,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.d("pruebas", " *** Obtengo Categoria Hogar *** ")
-        val obtHogar: Categoria = daoCategoria.getCategoria("Hogar")
+        val obtHogar: Categoria = daoCategoria.getCategoria("estudiar2")
         Log.d("pruebas", obtHogar.toString())
-
+/*
         Log.d("pruebas", " *** Añado tareas a la categoria Hogar *** ")
         var cocina = Tarea( daoCategoria.getCategoria("Hogar").idCategoria,"Cocina")
         daoTarea.addTarea(cocina)
@@ -57,6 +58,49 @@ class MainActivity : AppCompatActivity() {
         Log.d("pruebas", " *** Obtengo Tarea Cocina *** ")
         val obtCocina: Tarea = daoTarea.getTarea("Cocina")
         Log.d("pruebas", obtCocina.toString())
-
+*/
     }
+//    private fun pruebas2() {
+//        fun pruebas() {
+//            Log.d("pruebas", " *** Añado categorias: hogar y viajes ***")
+//            var hogar = Categoria("Hogar")
+//            daoCategoria.addCategoria(hogar, { hogarId ->
+//                Log.d("pruebas", " *** Categoria Hogar creada con ID: $hogarId ***")
+//
+//                Log.d("pruebas", " *** Añado tareas a la categoria Hogar *** ")
+//                var cocina = Tarea(hogarId, "Cocina")
+//                daoTarea.addTarea(cocina)
+//                var aseo = Tarea(hogarId, "Aseo")
+//                daoTarea.addTarea(aseo)
+//
+//                val tareasHogar1: List<Tarea> = daoTarea.getTareas(hogarId)
+//                tareasHogar1.forEach {
+//                    Log.d("pruebas", it.nombre)
+//                }
+//
+//                Log.d("pruebas", " *** Obtengo Tarea Cocina *** ")
+//                val obtCocina: Tarea = daoTarea.getTarea("Cocina")
+//                Log.d("pruebas", obtCocina.toString())
+//            }, { e ->
+//                Log.e("pruebas", "Error al crear categoria Hogar", e)
+//            })
+//
+//            var viajes = Categoria("Viajes")
+//            daoCategoria.addCategoria(viajes, { viajesId ->
+//                Log.d("pruebas", " *** Categoria Viajes creada con ID: $viajesId ***")
+//            }, { e ->
+//                Log.e("pruebas", "Error al crear categoria Viajes", e)
+//            })
+//
+//            Log.d("pruebas", " *** Veo categorias añadidas ***")
+//            val muestraCategorias1: List<Categoria> = daoCategoria.getCategorias()
+//            muestraCategorias1.forEach {
+//                Log.d("pruebas", it.nombre)
+//            }
+//
+//            Log.d("pruebas", " *** Obtengo Categoria Hogar *** ")
+//            val obtHogar: Categoria = daoCategoria.getCategoria("Hogar")
+//            Log.d("pruebas", obtHogar.toString())
+//        }
+//    }
 }

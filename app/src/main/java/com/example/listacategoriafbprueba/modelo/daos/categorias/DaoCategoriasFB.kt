@@ -15,14 +15,8 @@ class DaoCategoriasFB: InterfaceDaoCategorias, InterfaceDaoConexion {
         conexion = (con as BDFireBase).conexion
     }
     override fun addCategoria(ca: Categoria) {
-//        conexion.collection("categoria")
-//            .add(ca)
-//            .addOnSuccessListener { documentReference ->
-//                Log.d("firebase", "DocumentSnapshot written with ID: ${documentReference.id}")
-//            }
-//            .addOnFailureListener { e ->
-//                Log.d("firebase", "Error adding document", e)
-//            }
+//  override fun addCategoria(ca: Categoria, onSuccess: (String) -> Unit, onFailure: (Exception) -> Unit) {
+
         conexion.collection("categorias")
             .add(ca)
             .addOnSuccessListener { documentReference ->
